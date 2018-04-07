@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Treehouse Cage Match</title>
+    <link rel="shortcut icon" type="image/png" href="http://laoblogger.com/images/boxing-gloves-black-and-white-clip-art-3.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -18,16 +19,27 @@
         <div class="row">
             <div class="col-md-6" id="player-one">
                 <h1>Player One</h1>
-                 <input>
+                 <input id="player-one-input">
                  </div>
             <div class="col-md-6" id="player-two">
                 <h1>Player Two</h1> 
-                <input> 
+                <input id="player-two-input"> 
             </div>
         </div>
     </div>
 
-    <button type="button" class="btn btn-default btn-lg active">Let's Battle!!!</button>
+    <button type="button" class="btn btn-default btn-lg active" id="battle-button">Let's Battle!!!</button>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div id="player-one-output"></div>
+        </div>
+         <div class="col-md-6">
+             <div id="player-two-output"></div>
+        </div>
+    </div>
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
