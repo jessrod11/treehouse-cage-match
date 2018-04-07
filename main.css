@@ -1,3 +1,14 @@
 body {
-    background-color: turquoise;
+    background-image: url('https://images.fineartamerica.com/images-medium-large-5/2-classic-vintage-boxing-ring-allan-swart.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    height: 100vh;
+    background-color: black;
+    font-family: 'Anton', sans-serif;
+    color: rgb(17, 20, 20);
+}
+
+h1 {
+    font-size: 4em;
 }
