@@ -14,16 +14,17 @@
 </head>
 <body class="text-center" >
     <h1>Treehouse Fight Battle</h1>
+    <h2>Can you beat Stix's score?</h2>
    
-    <div class="container">
+    <div class="container text-center">
         <div class="row">
             <div class="col-md-6" id="player-one">
-                <h1>Player One</h1>
-                 <input id="player-one-input">
+                <h1>Player One: Stix</h1>
+                 <input id="player-one-input" disabled="disabled" placeholder="jessicarodgers3...">
                  </div>
             <div class="col-md-6" id="player-two">
-                <h1>Player Two</h1> 
-                <input id="player-two-input"> 
+                <h1>Player Two: YOU</h1> 
+                <input id="player-two-input" placeholder=" Treehouse username..."> 
             </div>
         </div>
     </div>
@@ -38,6 +39,8 @@
              <div id="player-two-output"></div>
         </div>
     </div>
+
+    <div id="you-won"></div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

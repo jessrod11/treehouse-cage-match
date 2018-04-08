@@ -13,6 +13,19 @@ h1 {
     font-size: 4em;
 }
 
-.player-one{
+img {
+    width: 80%;
     border: 2px double white;
+    
+}
+
+.player-one-card {
+    background-color: black;
+    border: 2px double white;
+    color: white;
+}
+.player-two-card {
+    background-color: black;
+    border: 2px double white;
+    color: white;
 }
