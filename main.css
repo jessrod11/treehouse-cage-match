@@ -13,6 +13,7 @@ h1 {
     font-size: 4em;
 }
 
+
 img {
     width: 80%;
     border: 2px double white;
@@ -23,9 +24,15 @@ img {
     background-color: black;
     border: 2px double white;
     color: white;
+    margin-bottom: 20px;
 }
 .player-two-card {
     background-color: black;
     border: 2px double white;
     color: white;
+    margin-bottom: 20px;
+}
+
+#battle-button {
+    margin-bottom: 13px;
 }

@@ -9,7 +9,7 @@ const printToDom = (domString, divId) => {
 
 const stixDomString = (userArray) => {
     let domString = '';
-    domString += `<div class="player-one-card container col-md-6">`;
+    domString += `<div class="player-one-card container col-lg-6">`;
     domString += `<div class="row">`;
     domString += `<h2>${userArray.name}</h2>`;
     domString += `<img src="${userArray.gravatar_url}">`;
@@ -22,7 +22,7 @@ const stixDomString = (userArray) => {
 
 const yourDomString = (userArray) => {
     let domString = '';
-    domString += `<div class="player-two-card container col-md-6">`;
+    domString += `<div class="player-two-card container col-lg-6">`;
     domString += `<div class="row">`;
     domString += `<h2>${userArray.name}</h2>`;
     domString += `<img src="${userArray.gravatar_url}">`;
@@ -30,6 +30,7 @@ const yourDomString = (userArray) => {
     domString += `</div>`;
     domString += `</div>`;
     printToDom(domString, 'player-two-output');
+    
 }
 
 // Score Builder
@@ -66,6 +67,12 @@ let totalScore = [];
 const battleBtn = () => {
     document.getElementById('battle-button').addEventListener('click', playerTwo);
 }
+
+// const resetBtn = () => {
+//     document.getElementById('reset-button').addEventListener (click, (e) =>{
+        
+//     });
+// }
 
 // XHR
 function codeFailed(){
