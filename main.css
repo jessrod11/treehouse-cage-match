@@ -2,7 +2,7 @@ body {
     background-image: url('https://images.fineartamerica.com/images-medium-large-5/2-classic-vintage-boxing-ring-allan-swart.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;  
     height: 100vh;
     background-color: black;
     font-family: 'Anton', sans-serif;
@@ -25,12 +25,14 @@ img {
     border: 2px double white;
     color: white;
     margin-bottom: 20px;
+    margin-left: 20%;
 }
 .player-two-card {
     background-color: black;
     border: 2px double white;
     color: white;
     margin-bottom: 20px;
+    margin-left: 15%;
 }
 
 #battle-button {
