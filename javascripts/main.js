@@ -6,7 +6,6 @@ const printToDom = (domString, divId) => {
 }
 
 // Build Card
-
 const stixDomString = (userArray) => {
     let domString = '';
     domString += `<div class="player-one-card container col-md-6">`;
@@ -14,13 +13,6 @@ const stixDomString = (userArray) => {
     domString += `<h2>${userArray.name}</h2>`;
     domString += `<img src="${userArray.gravatar_url}">`;
     domString += `<h2>${userArray.points.total}</h2>`;
-    // domString += `<div class="row">`;
-    // domString += `<div class="col-sm-12 badge-container">`;
-    // userArray.badges.forEach(badge => {
-    //     domString += `<img class="badgeImg" src="${badge.icon_url}">`;
-    // });
-    // domString += `</div>`;
-    // domString += `</div>`;
     domString += `</div>`;
     domString += `</div>`;
     printToDom(domString, 'player-one-output');
@@ -34,13 +26,6 @@ const yourDomString = (userArray) => {
     domString += `<h2>${userArray.name}</h2>`;
     domString += `<img src="${userArray.gravatar_url}">`;
     domString += `<h2>${userArray.points.total}</h2>`;
-    // domString += `<div class="row">`;
-    // domString += `<div class="col-sm-12">`;
-    //      userArray.badges.forEach(badge => {
-    //         domString += `<img class="badgeImg" src="${badge.icon_url}">`;
-    //     });
-    // domString += `</div>`;
-    // domString += `</div>`;
     domString += `</div>`;
     domString += `</div>`;
     printToDom(domString, 'player-two-output');
@@ -50,9 +35,8 @@ const yourDomString = (userArray) => {
 // Score Builder
 let totalScore = [];
 
-    const buildScore = (userArray) => {
+    const buildScore = () => {
         let domString = '';
-        let badgeDom = '';
         if (totalScore[0] > totalScore[1]) {
             domString += `<div class="col-md-6 col-md-offset-3 well well-lg">`;
             domString += `<h2>Stix Beat YA!!!</h2>`;
@@ -77,18 +61,6 @@ let totalScore = [];
         }
         printToDom(domString, "you-won");
     }
-
-    // const badgeDom = (userArray) => {
-    //     let domString = '';
-    //     domString += `<div class="row">`
-    //     domString += `<div class="col-sm-12">`
-    //     userArray.badges.forEach(badge => {
-    //         domString += `<img class="badgeImg" src="${badge.icon_url}">`
-    //     });
-    //     domString += `</div>`
-    //     domString += `</div>`
-    //     printToDom(domString, "badge-output");
-    // };
 
 //Event Listener
 const battleBtn = () => {
