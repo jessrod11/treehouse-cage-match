@@ -6,7 +6,6 @@ const printToDom = (domString, divId) => {
 }
 
 // Build Card
-
 const stixDomString = (userArray) => {
     let domString = '';
     domString += `<div class="player-one-card container col-md-6">`;
@@ -30,33 +29,34 @@ const yourDomString = (userArray) => {
     domString += `</div>`;
     domString += `</div>`;
     printToDom(domString, 'player-two-output');
+    
 }
 
 // Score Builder
 let totalScore = [];
 
-    const buildScore = (scoreArray) => {
+    const buildScore = () => {
         let domString = '';
         if (totalScore[0] > totalScore[1]) {
             domString += `<div class="col-md-6 col-md-offset-3 well well-lg">`;
-            domString += `<h3>"Stix Beat YA!!!"</h3>`;
+            domString += `<h2>Stix Beat YA!!!</h2>`;
             domString += `</div>`;
         }
         else if (totalScore[0] < totalScore[1]) {
             domString += `<div class="col-md-6 col-md-offset-3 well well-lg ">`;
-            domString += `<h3>"You Beat Stix!"</h3>`;
+            domString += `<h2>You Beat Stix!</h2>`;
             domString += `</div>`;
         }
         else if (totalScore[0] = totalScore[1]) {
             domString += `<div class="col-md-6 col-md-offset-3">`;
             domString += `<div class="alert alert-warning" role="alert">`;
-            domString += `<h3>"You tied with Stix! Arm Wrestle to break the tie!!!"</h3>`
+            domString += `<h2>You tied with Stix! Arm Wrestle to break the tie!!!</h2>`;
             domString += `</div>`;
             domString += `</div>`;
         }
         else {
             domString += `<div class="alert alert-danger" role="alert">`;
-            domString += `<h3>"Something went wrong!"</h3>`;
+            domString += `<h2>Something went wrong!</h2>`;
             domString += `</div>`;
         }
         printToDom(domString, "you-won");
@@ -84,6 +84,7 @@ function executeWhenPlayerTwoLoads(){
     yourDomString(data);
     totalScore.push(data.points.total);
     buildScore(totalScore);
+    // badgeDom(data);
 }
 
 const playerOne = () => {
