@@ -14,7 +14,7 @@ h1 {
 }
 
 
-img {
+.domImg {
     width: 80%;
     border: 2px double white;
     
@@ -51,4 +51,16 @@ img {
 
 .well {
     background: #5cb85c;
+}
+
+#badges{
+   margin-top: 5px;
+
+}
+
+.winner {
+    margin-right: 32px;
+    width: 25%;
+    border: 2px solid white;
+    margin-top: 24px;
 }
