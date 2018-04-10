@@ -2,21 +2,20 @@ console.log('Stix');
 
 // Prints To Page
 const printToDom = (domString, divId) => {
-    document.getElementById(divId).innerHTML += domString;
+    document.getElementById(divId).innerHTML = domString;
 }
 
 // Build Card
 const stixDomString = (userArray) => {
     let domString = '';
-    domString += `<div class="player-one-card container col-md-6">`;
+    domString += `<div id="stix" class="player-one-card container col-md-6 hide">`;
     domString += `<div class="row">`;
     domString += `<h2>${userArray.name}</h2>`;
-    domString += `<img src="${userArray.gravatar_url}">`;
+    domString += `<img class="domImg" src="${userArray.gravatar_url}">`;
     domString += `<h2>${userArray.points.total}</h2>`;
     domString += `</div>`;
     domString += `</div>`;
     printToDom(domString, 'player-one-output');
-    battleBtn();
 }
 
 const yourDomString = (userArray) => {
@@ -24,27 +23,29 @@ const yourDomString = (userArray) => {
     domString += `<div class="player-two-card container col-md-6">`;
     domString += `<div class="row">`;
     domString += `<h2>${userArray.name}</h2>`;
-    domString += `<img src="${userArray.gravatar_url}">`;
+    domString += `<img class="domImg" src="${userArray.gravatar_url}">`;
     domString += `<h2>${userArray.points.total}</h2>`;
     domString += `</div>`;
     domString += `</div>`;
     printToDom(domString, 'player-two-output');
+    nextBattle();
     
 }
 
 // Score Builder
 let totalScore = [];
-
-    const buildScore = () => {
+    const buildScore = (data) => {
+        console.log('is this data', data);
         let domString = '';
         if (totalScore[0] > totalScore[1]) {
+            console.log('totalScore', totalScore);
             domString += `<div class="col-md-6 col-md-offset-3 well well-lg">`;
-            domString += `<h2>Stix Beat YA!!!</h2>`;
+            domString += `<h2>Stix is the Winner!!!</h2>`;
             domString += `</div>`;
         }
         else if (totalScore[0] < totalScore[1]) {
             domString += `<div class="col-md-6 col-md-offset-3 well well-lg ">`;
-            domString += `<h2>You Beat Stix!</h2>`;
+            domString += `<h2>Eric beat Stix!</h2>`;
             domString += `</div>`;
         }
         else if (totalScore[0] = totalScore[1]) {
@@ -59,12 +60,37 @@ let totalScore = [];
             domString += `<h2>Something went wrong!</h2>`;
             domString += `</div>`;
         }
-        printToDom(domString, "you-won");
+        printToDom(domString, 'you-won');
     }
 
+    const winnerBadges = (winner) => {
+        let winnerString ='' ;
+        winner.badges.forEach((badge)=>{
+        winnerString += `<img class="winner" src="${badge.icon_url}">`;
+             })
+        printToDom(winnerString, 'badges');
+    }
+     
+
 //Event Listener
-const battleBtn = () => {
-    document.getElementById('battle-button').addEventListener('click', playerTwo);
+const battleBtn = (e) => {
+    const battle = document.getElementById('battle-button');
+    battle.addEventListener('click', (e) =>{
+        if (e.target.innerHTML === "Let's Battle!!!"){
+            document.getElementById('stix').classList.remove('hide');        }
+        playerTwo();
+    });
+}
+
+const nextBattle = () => {
+    const nextBattleBtn = document.getElementById('next-battle');
+    nextBattleBtn.addEventListener('click', (e) =>{
+        document.getElementById('stix').classList.add('hide'); 
+        document.getElementById('player-two-output').innerHTML = '';       
+        document.getElementById('you-won').innerHTML = '';
+        document.getElementById('player-two-input').innerHTML = '';
+        document.getElementById('badges').innerHTML = '';
+    })
 }
 
 // XHR
@@ -76,7 +102,6 @@ function executeWhenPlayerOneLoads(){
     const data = JSON.parse(this.responseText);
     stixDomString(data);
     totalScore.push(data.points.total);
-    playerTwo();
 }
 
 function executeWhenPlayerTwoLoads(){
@@ -84,7 +109,8 @@ function executeWhenPlayerTwoLoads(){
     yourDomString(data);
     totalScore.push(data.points.total);
     buildScore(totalScore);
-    // badgeDom(data);
+    winnerBadges(data);
+ 
 }
 
 const playerOne = () => {
@@ -100,14 +126,15 @@ const playerTwo = () => {
     let myRequest = new XMLHttpRequest();
         myRequest.addEventListener('load', executeWhenPlayerTwoLoads);
         myRequest.addEventListener('error', codeFailed);
-        myRequest.open('GET','https://teamtreehouse.com/' + userName + '.json');
+        myRequest.open('GET','https://teamtreehouse.com/ericholman.json');
+        // myRequest.open('GET','https://teamtreehouse.com/' + userName + '.json');
         myRequest.send();
 }
 
 // Starts Application
 const startApplication = () => {
-    battleBtn();
     playerOne();
+    battleBtn();    
 }
 
 startApplication();
