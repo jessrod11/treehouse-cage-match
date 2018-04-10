@@ -2,7 +2,7 @@ console.log('Stix');
 
 // Prints To Page
 const printToDom = (domString, divId) => {
-    document.getElementById(divId).innerHTML = domString;
+    document.getElementById(divId).innerHTML += domString;
 }
 
 // Build Card
@@ -28,6 +28,7 @@ const yourDomString = (userArray) => {
     domString += `</div>`;
     domString += `</div>`;
     printToDom(domString, 'player-two-output');
+    nextBattle();
     
 }
 
@@ -67,7 +68,6 @@ let totalScore = [];
 const battleBtn = (e) => {
     const battle = document.getElementById('battle-button');
     battle.addEventListener('click', (e) =>{
-        console.log(e.target);
         if (e.target.innerHTML === "Let's Battle!!!"){
             document.getElementById('stix').classList.remove('hide');
         }
@@ -78,8 +78,8 @@ const battleBtn = (e) => {
 const nextBattle = () => {
     const nextBattleBtn = document.getElementById('next-battle');
     nextBattleBtn.addEventListener('click', (e) =>{
-        document.getElementById('player-one-output').innerHTML = '';
-        document.getElementById('player-two-output').innerHTML = '';
+        document.getElementById('stix').classList.add('hide'); 
+        document.getElementById('player-two-output').innerHTML = '';       
         document.getElementById('you-won').innerHTML = '';
         document.getElementById('player-two-input').innerHTML = '';
     })
@@ -94,7 +94,6 @@ function executeWhenPlayerOneLoads(){
     const data = JSON.parse(this.responseText);
     stixDomString(data);
     totalScore.push(data.points.total);
-    // nextBattle();
 }
 
 function executeWhenPlayerTwoLoads(){
@@ -102,8 +101,7 @@ function executeWhenPlayerTwoLoads(){
     yourDomString(data);
     totalScore.push(data.points.total);
     buildScore(totalScore);
-    // nextBattle();
-    // badgeDom(data);
+    
 }
 
 const playerOne = () => {
@@ -127,7 +125,7 @@ const playerTwo = () => {
 const startApplication = () => {
     playerOne();
     battleBtn();
-    nextBattle();
+    // nextBattle();
     
 }
 

@@ -5,8 +5,8 @@ body {
     background-size: cover;  
     height: 100vh;
     background-color: black;
-    font-family: 'Anton', sans-serif;
-    color: rgb(17, 20, 20);
+    font-family: 'Paytone One', sans-serif;
+    color: rgb(5, 5, 5);
 }
 
 h1 {
@@ -22,19 +22,33 @@ img {
 
 .player-one-card {
     background-color: black;
-    border: 2px double white;
+    border: 2px double #5cb85c;
     color: white;
     margin-bottom: 20px;
     margin-left: 20%;
 }
 .player-two-card {
     background-color: black;
-    border: 2px double white;
+    border: 2px double #5cb85c;
     color: white;
     margin-bottom: 20px;
     margin-left: 15%;
 }
 
+
+
 #battle-button {
+    color: black;
     margin-bottom: 13px;
+    margin-left: 5px;
+}
+
+#next-battle{
+    color: black;
+    margin-left: 40px;
+    margin-bottom: 13px;
+}
+
+.well {
+    background: #5cb85c;
 }
