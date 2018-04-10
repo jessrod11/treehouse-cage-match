@@ -2,13 +2,13 @@ console.log('Stix');
 
 // Prints To Page
 const printToDom = (domString, divId) => {
-    document.getElementById(divId).innerHTML += domString;
+    document.getElementById(divId).innerHTML = domString;
 }
 
 // Build Card
 const stixDomString = (userArray) => {
     let domString = '';
-    domString += `<div class="player-one-card container col-md-6">`;
+    domString += `<div id="stix" class="player-one-card container col-md-6 hide">`;
     domString += `<div class="row">`;
     domString += `<h2>${userArray.name}</h2>`;
     domString += `<img src="${userArray.gravatar_url}">`;
@@ -16,7 +16,6 @@ const stixDomString = (userArray) => {
     domString += `</div>`;
     domString += `</div>`;
     printToDom(domString, 'player-one-output');
-    battleBtn();
 }
 
 const yourDomString = (userArray) => {
@@ -35,9 +34,11 @@ const yourDomString = (userArray) => {
 // Score Builder
 let totalScore = [];
 
-    const buildScore = () => {
+    const buildScore = (pointsArray) => {
+        console.log('points', pointsArray);
         let domString = '';
         if (totalScore[0] > totalScore[1]) {
+            console.log('totalScore', totalScore);
             domString += `<div class="col-md-6 col-md-offset-3 well well-lg">`;
             domString += `<h2>Stix Beat YA!!!</h2>`;
             domString += `</div>`;
@@ -59,12 +60,29 @@ let totalScore = [];
             domString += `<h2>Something went wrong!</h2>`;
             domString += `</div>`;
         }
-        printToDom(domString, "you-won");
+        printToDom(domString, 'you-won');
     }
 
 //Event Listener
-const battleBtn = () => {
-    document.getElementById('battle-button').addEventListener('click', playerTwo);
+const battleBtn = (e) => {
+    const battle = document.getElementById('battle-button');
+    battle.addEventListener('click', (e) =>{
+        console.log(e.target);
+        if (e.target.innerHTML === "Let's Battle!!!"){
+            document.getElementById('stix').classList.remove('hide');
+        }
+        playerTwo();
+    });
+}
+
+const nextBattle = () => {
+    const nextBattleBtn = document.getElementById('next-battle');
+    nextBattleBtn.addEventListener('click', (e) =>{
+        document.getElementById('player-one-output').innerHTML = '';
+        document.getElementById('player-two-output').innerHTML = '';
+        document.getElementById('you-won').innerHTML = '';
+        document.getElementById('player-two-input').innerHTML = '';
+    })
 }
 
 // XHR
@@ -76,7 +94,7 @@ function executeWhenPlayerOneLoads(){
     const data = JSON.parse(this.responseText);
     stixDomString(data);
     totalScore.push(data.points.total);
-    playerTwo();
+    // nextBattle();
 }
 
 function executeWhenPlayerTwoLoads(){
@@ -84,6 +102,7 @@ function executeWhenPlayerTwoLoads(){
     yourDomString(data);
     totalScore.push(data.points.total);
     buildScore(totalScore);
+    // nextBattle();
     // badgeDom(data);
 }
 
@@ -106,8 +125,10 @@ const playerTwo = () => {
 
 // Starts Application
 const startApplication = () => {
-    battleBtn();
     playerOne();
+    battleBtn();
+    nextBattle();
+    
 }
 
 startApplication();
