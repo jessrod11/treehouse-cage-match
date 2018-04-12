@@ -5,13 +5,13 @@ This Treehouse Cage Match app is a  point match between Stix and Eric. The data 
 
 
 ## Screenshot
-![Webpage]()
+![Webpage](https://raw.githubusercontent.com/jessrod11/treehouse-cage-match/master/screenshots/screenshot1.png)
 
 ## Screenshot
-![Webpage]()
+![Webpage](https://raw.githubusercontent.com/jessrod11/treehouse-cage-match/master/screenshots/screenshot2.png)
 
 ## Screenshot
-![Webpage]()
+![Webpage](https://raw.githubusercontent.com/jessrod11/treehouse-cage-match/master/screenshots/screenshot3.png)
 
 ## How to Run
 1. Clone down this repo and cd into project.
